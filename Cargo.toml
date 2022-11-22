@@ -1,0 +1,21 @@
+[package]
+name = "bitflyer"
+version = "0.1.0"
+edition = "2021"
+authors = ["block <block.cube.lib@gmail.com"]
+
+[dependencies]
+anyhow = "1.0.66"
+chrono = { version = "0.4.22", features = ["serde"] }
+chrono-tz = "0.8.0"
+dotenvy = "0.15.6"
+hmac = "0.12.1"
+reqwest = "0.11.12"
+rust_decimal = { version = "1.26.1", features = ["serde", "serde-float"] }
+rust_decimal_macros = "1.26.1"
+serde = { version = "1.0.147", features = ["derive"] }
+serde_json = "1.0.87"
+sha2 = "0.10.6"
+tokio = { version = "1.21.2", features = ["full"] }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.16"
