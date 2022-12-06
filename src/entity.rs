@@ -237,14 +237,14 @@ pub struct Ticker {
 
 #[derive(Clone, Debug, PartialEq, Eq, Deserialize)]
 pub struct Execution {
-    id: u64,
-    side: Side,
-    price: Decimal,
-    size: Decimal,
+    pub id: u64,
+    pub side: Side,
+    pub price: Decimal,
+    pub size: Decimal,
     #[serde(with = "timestamp")]
-    exec_date: DateTime<Utc>,
-    buy_child_order_acceptance_id: String,
-    sell_child_order_acceptance_id: String,
+    pub exec_date: DateTime<Utc>,
+    pub buy_child_order_acceptance_id: String,
+    pub sell_child_order_acceptance_id: String,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Deserialize)]
