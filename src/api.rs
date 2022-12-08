@@ -88,8 +88,11 @@ impl Client {
         };
         if response.status().is_success() {
             let body = response.text().await?;
-            let v: <T as ApiRequest>::Response = T::deserialize_response_body(&body)?;
-            Ok(v)
+            let result: Result<<T as ApiRequest>::Response> = T::deserialize_response_body(&body);
+            match result {
+                Ok(v) => Ok(v),
+                Err(e) => Err(anyhow!("desesrialize error. error = {e:?}. body = {body}")),
+            }
         } else {
             Err(anyhow::anyhow!(
                 "request is failed: status -> {}\nrequest -> {:?}\nrequest.body -> {:?}\nresponse -> {:?}",
