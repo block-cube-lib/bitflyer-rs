@@ -91,7 +91,7 @@ impl Client {
             let result: Result<<T as ApiRequest>::Response> = T::deserialize_response_body(&body);
             match result {
                 Ok(v) => Ok(v),
-                Err(e) => Err(anyhow!("desesrialize error. error = {e:?}. body = {body}")),
+                Err(e) => Err(anyhow!("desesrialize error. error = {e:?}. request = {request:?}. response body = {body}")),
             }
         } else {
             Err(anyhow::anyhow!(
