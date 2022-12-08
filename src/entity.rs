@@ -29,6 +29,15 @@ impl std::fmt::Display for Side {
     }
 }
 
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "UPPERCASE")]
+pub enum ExecutionSide {
+    Buy,
+    Sell,
+    #[serde(other)]
+    Empty,
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "UPPERCASE")]
 pub enum ParentOrderSide {
@@ -238,7 +247,7 @@ pub struct Ticker {
 #[derive(Clone, Debug, PartialEq, Eq, Deserialize)]
 pub struct Execution {
     pub id: u64,
-    pub side: Option<Side>,
+    pub side: ExecutionSide,
     pub price: Decimal,
     pub size: Decimal,
     #[serde(with = "timestamp")]
