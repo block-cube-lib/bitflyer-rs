@@ -238,7 +238,7 @@ pub struct Ticker {
 #[derive(Clone, Debug, PartialEq, Eq, Deserialize)]
 pub struct Execution {
     pub id: u64,
-    pub side: Side,
+    pub side: Option<Side>,
     pub price: Decimal,
     pub size: Decimal,
     #[serde(with = "timestamp")]
